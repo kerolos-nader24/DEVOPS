@@ -1,0 +1,51 @@
+Git Commands Summary
+1. Configuration
+git config --global user.name "Your Name"
+git config --global user.email "you@example.com"
+
+2. Start a Repository
+git init            # Create new repository
+git clone URL       # Copy (clone) existing repository
+
+3. Check Status
+git status          # Show current changes
+
+4. Track & Stage Changes
+git add filename    # Stage single file
+git add .           # Stage all files
+
+5. Commit Changes
+git commit -m "message"   # Save staged changes
+
+6. View History
+git log             # Show commit history
+git log --oneline   # Short history
+
+7. Branching
+git branch          # List branches
+git branch new-branch     # Create new branch
+git checkout new-branch   # Switch to branch
+git checkout -b new-branch # Create & switch
+
+8. Merge
+git checkout main
+git merge branch-name
+
+9. Remote Repositories
+git remote -v       # Show remotes
+git remote add origin URL   # Add remote repo
+
+10. Push & Pull
+git push origin main        # Upload commits
+git pull origin main        # Download and merge
+git pull origin main --rebase  # Download and reapply commits
+
+11. Undo & Reset
+git restore filename        # Undo unstaged changes
+git reset HEAD filename     # Unstage file
+git reset --hard            # Remove all local changes
+
+12. Stash
+git stash save "message"    # Save changes temporarily
+git stash list              # Show stashes
+git stash pop               # Restore last stash
