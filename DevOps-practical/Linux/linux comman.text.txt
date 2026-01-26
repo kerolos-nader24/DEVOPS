@@ -1,0 +1,284 @@
+📘 Linux Command Line Cheat Sheet (RHEL9)
+CH02 - Accessing the Command Line
+
+bash → Start Bash Shell
+
+date → Display date & time
+
+passwd → Change user password
+
+cat file.txt → Display entire file content
+
+less file.txt → View file with navigation
+
+head file.txt → Show first 10 lines (default)
+
+tail file.txt → Show last 10 lines (default)
+
+history → Show command history
+
+!! → Run the last command
+
+!n → Run command number n (example: !15)
+
+Ctrl + C → Stop current command
+
+Ctrl + D → Logout/exit terminal
+
+Ctrl + L / clear → Clear screen
+
+↑ / ↓ → Scroll through previous/next commands
+
+CH03 - Managing Files
+
+ls, ls -l, ls -a → List files and directories
+
+cd /path → Change directory
+
+pwd → Show current directory
+
+touch file.txt → Create empty file
+
+cp file1 file2 → Copy file
+
+cp -r dir1 dir2 → Copy directory
+
+mv file path/ → Move file
+
+mv oldname newname → Rename file
+
+rm file.txt → Remove file
+
+rm -r folder/ → Remove directory
+
+file file.txt → Show file type
+
+ln file link → Create hard link
+
+ln -s file link → Create soft link (shortcut)
+
+stat file.txt → Detailed file info
+
+ls -i → Show inode of each file
+
+find / -name file.txt → Search for file
+
+ls *.txt → Match multiple characters
+
+ls file?.txt → Match single character
+
+grep "word" file → Search for word in file
+
+grep -i → Case-insensitive search
+
+grep -r "pattern" /path → Recursive search in files/dirs
+
+cut -d ":" -f1 /etc/passwd → Extract specific column
+
+tr → Replace or delete characters
+
+CH04 - Getting Help
+
+man command → Show manual page
+
+/pattern (inside man) → Search inside man page
+
+q → Quit man page
+
+apropos user → Search related commands
+
+whatis command → Short command description
+
+command --help → Quick help for command
+
+CH05 - Creating, Viewing, Editing Text Files
+
+echo "text" > file.txt → Overwrite file with text
+
+echo "text" >> file.txt → Append text to file
+
+cat < file.txt → Use file as input
+
+command1 | command2 → Pipe output to another command
+
+vim file.txt → Open file in Vim
+
+i → Insert mode
+
+Esc :w → Save
+
+Esc :q → Quit
+
+Esc :wq → Save & quit
+
+Esc :q! → Quit without saving
+
+set → Show variables
+
+export VAR=value → Create environment variable
+
+unset VAR → Remove variable
+
+echo $VAR → Print variable value
+
+CH06 - Managing Users & Groups
+
+id → Show UID & GID of user
+
+whoami → Show current username
+
+su - → Switch user (or root)
+
+sudo command → Run command as root
+
+visudo → Safely edit sudoers file
+
+useradd john → Add new user
+
+usermod -s /bin/bash john → Modify user
+
+userdel john → Delete user
+
+groupadd devs → Create group
+
+groupmod -n newname devs → Rename group
+
+groupdel devs → Delete group
+
+passwd john → Change user password
+
+chage -l john → Show password aging info
+
+CH07 - File Permissions & Ownership
+
+ls -l → Show file permissions
+
+chmod u+x file.sh → Change permissions (symbolic)
+
+chmod 755 file.sh → Change permissions (numeric)
+
+chown user file.txt → Change file owner
+
+chgrp group file.txt → Change group ownership
+
+chmod u+s file.sh → Enable setuid/setgid
+
+chmod +t /tmp → Enable sticky bit
+
+umask → Show/modify default permissions
+
+CH08 - Managing Processes
+
+ps aux → List running processes
+
+top → Interactive process monitor
+
+htop → Advanced version of top
+
+sleep 60 & → Run command in background
+
+jobs → List background jobs
+
+fg %1 → Bring job to foreground
+
+bg %1 → Resume job in background
+
+kill PID → Kill process by PID
+
+nice -n 10 command → Run with priority
+
+renice -n 5 -p PID → Change process priority
+
+CH09 - Services & Daemons
+
+systemctl status sshd → Check service status
+
+systemctl start service → Start service
+
+systemctl stop service → Stop service
+
+systemctl restart service → Restart service
+
+systemctl enable service → Enable at boot
+
+systemctl disable service → Disable at boot
+
+CH10 - SSH Configuration
+
+ssh user@host → Connect to remote server
+
+ssh-keygen -t rsa → Generate SSH key
+
+ssh-copy-id user@remote → Copy key to remote server
+
+vim /etc/ssh/sshd_config → Edit SSH config file
+
+systemctl restart sshd → Restart SSH service
+
+CH11 - Logs
+
+journalctl -xe → Show logs
+
+journalctl -b → Logs since last boot
+
+journalctl -u sshd → Logs for specific service
+
+cat /var/log/messages → View system log file
+
+logger "text" → Send log message
+
+timedatectl set-timezone Africa/Cairo → Change timezone
+
+CH12 - Networking
+
+ip a or ip addr → Show network interfaces
+
+nmcli device show → Show network info
+
+nmtui → Text-based network config tool
+
+hostnamectl set-hostname newname → Change hostname
+
+cat /etc/hosts → View/Edit hosts file
+
+CH13 - Archiving & File Transfer
+
+tar -cvf files.tar dir/ → Create archive
+
+tar -xvf files.tar → Extract archive
+
+tar -zcvf files.tar.gz dir/ → Compress with gzip
+
+scp file user@host:/path → Secure copy file
+
+rsync -av file user@host:/dest → Sync files between hosts
+
+CH14 - Package Management
+
+rpm -ivh package.rpm → Install RPM
+
+rpm -q package → Query installed package
+
+rpm -e package → Remove RPM
+
+yum list → List available packages
+
+yum search name → Search for package
+
+yum install package → Install package
+
+yum remove package → Remove package
+
+yum update → Update system/packages
+
+CH15 - File Systems
+
+df -h → Show disk usage
+
+mount /dev/sdb1 /mnt → Mount filesystem
+
+umount /mnt → Unmount filesystem
+
+blkid → Show block device info
+
+find / -name filename → Find file in system
