@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login</title>
+</head>
+<body>
+  <h1>Login Page</h1>
+  <form id="loginForm">
+    <input type="text" id="user" placeholder="Username" required>
+    <input type="password" id="pass" placeholder="Password" required>
+    <button type="submit">Login</button>
+    <p id="loginError" style="color:red;"></p>
+  </form>
+
+  <h2>Dashboard</h2>
+  <button id="loadBtn">Load Data</button>
+  <div id="out"></div>
+
+  <script>
+    const loginForm = document.getElementById('loginForm');
+    if(loginForm){
+      loginForm.addEventListener('submit', function(e){
+        e.preventDefault();
+        const username = document.getElementById('user').value;
+        const password = document.getElementById('pass').value;
+
+        fetch('http://backend-service:3000/login', {
+          method:'POST',
+          headers:{'Content-Type':'application/json'},
+          body: JSON.stringify({username, password})
+        })
+        .then(r => r.json())
+        .then(d => {
+          if(d.success){
+            localStorage.setItem("token","secure-token");
+            alert("Login successful! Click Load Data.");
+          } else {
+            document.getElementById('loginError').innerText = 'Login failed';
+          }
+        });
+      });
+    }
+
+    const loadBtn = document.getElementById('loadBtn');
+    if(loadBtn){
+      loadBtn.addEventListener('click', function(){
+        fetch('http://backend-service:3000/data', {
+          headers: { Authorization: localStorage.getItem("token") }
+        })
+        .then(r => r.json())
+        .then(d => {
+          document.getElementById('out').innerText = d.message;
+        });
+      });
+    }
+  </script>
+</body>
+</html>
